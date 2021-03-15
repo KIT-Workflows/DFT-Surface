@@ -1,0 +1,43 @@
+<WaNoTemplate>
+  
+<WaNoMeta>
+ 		<Author>
+  			<Name> Celso R. C. Rego </Name>
+  			<Email>celsorego@kit.edu</Email>
+ 		</Author>
+
+		<Description>
+   		This WaNo is passing two variables to run inside the ForEach loop Control.
+		</Description>
+
+ 		<Keyword>Multvariables</Keyword>
+</WaNoMeta>
+  
+<WaNoRoot name="Mult_Mol">
+  
+	<WaNoFloat name="Var_begin">0.3</WaNoFloat>
+	<WaNoFloat name="Var_end">10.0</WaNoFloat>
+  <WaNoInt name="N_points">3</WaNoInt> 
+  <WaNoString name="Var_name" description = "Name of the distances list" >z_0</WaNoString>
+  
+  <WaNoString name="Molecule_name">mol</WaNoString>
+  <WaNoFile logical_filename="Molecules.tar.xz"  name = "Molecules">/home/celso/Wanos_2020/Test1/Molecules.tar.xz</WaNoFile>
+</WaNoRoot>
+
+  <WaNoExecCommand>
+    source  /home/ws/gt5111/miniconda3/etc/profile.d/conda.sh
+	  conda activate
+    python Var_generator.py
+  </WaNoExecCommand>
+  
+    <WaNoInputFiles>
+      <WaNoInputFile logical_filename="Var_generator.py">Var_generator.py</WaNoInputFile>
+    </WaNoInputFiles>   
+    
+    <WaNoOutputFiles>
+      <WaNoOutputFile>output_dict.yml</WaNoOutputFile>
+    </WaNoOutputFiles>
+</WaNoTemplate>
+
+
+

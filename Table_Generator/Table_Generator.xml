@@ -1,0 +1,42 @@
+<WaNoTemplate>
+
+	<WaNoMeta>
+ 		<Author>
+  			<Name> Celso R. C. Rego </Name>
+  			<Email>celsorego@kit.edu</Email>
+ 		</Author>
+
+		<Description>
+   			This WaNo uses a python script
+			to generate a table with two variables, e.g., 
+			energy and volume values.
+ 		</Description>
+
+ 		<Keyword>Analysis</Keyword>
+	</WaNoMeta>
+
+	<WaNoRoot name="Table_Generator">
+		<WaNoString name="Search_in_File">File</WaNoString>
+		<WaNoBool name="Delete_Files">False</WaNoBool>
+		<WaNoMultipleOf name="Search_Parameters">
+ 			<Element id="0">
+ 				<WaNoString name="var">var_x</WaNoString>
+ 			</Element>
+ 		</WaNoMultipleOf>
+	</WaNoRoot>
+
+	<WaNoExecCommand>
+		source /home/ws/gt5111/miniconda3/etc/profile.d/conda.sh
+		conda activate
+		python Extract_Script.py  {{ wano["Search_in_File"] }} {{ wano["Delete_Files"] }} {{ wano["Plot_Figure"] }}\
+		 {% for element in wano["Search_Parameters"] %} {{ element["var"] }} {% endfor %}
+	</WaNoExecCommand>
+	
+	<WaNoInputFiles>
+		<WaNoInputFile logical_filename="Extract_Script.py">Extract_Script.py</WaNoInputFile>
+	</WaNoInputFiles>
+	
+	<WaNoOutputFiles>
+		<WaNoOutputFile>Table_var</WaNoOutputFile>		
+	</WaNoOutputFiles>
+</WaNoTemplate>

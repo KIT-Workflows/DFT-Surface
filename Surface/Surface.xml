@@ -1,0 +1,58 @@
+<WaNoTemplate>
+	
+	<WaNoRoot name="Surface">
+	<WaNoInt name="Aux_var">1</WaNoInt>
+	<WaNoString name="Mol_name">Mol_name</WaNoString>
+
+	<WaNoDictBox name="Bulk Properties">
+		<WaNoDropDown name="Unit Cell Types">
+			<Entry id="0">SC</Entry>
+			<Entry id="1">BCC</Entry>
+			<Entry id="2" chosen="True">FCC</Entry>
+			<Entry id="3">DC</Entry>
+			<Entry id="4">Graphene</Entry>
+		</WaNoDropDown>
+
+		<WaNoString name="Element">Cu</WaNoString>
+		<WaNoFloat name="Lattice Constant (A)">3.6</WaNoFloat>
+	</WaNoDictBox>
+
+	<WaNoDictBox name="Surface Properties">
+		<WaNoFloat name="Slab_size (A)">6.0</WaNoFloat>
+		<WaNoFloat name="Vacuum_size (A)">6.0</WaNoFloat>
+        <WaNoMatrixFloat rows="1" cols="3" col_header="h;k;l" row_header="" name="Miller_index">[[1,0,0]]</WaNoMatrixFloat>
+		<WaNoMatrixFloat rows="1" cols="3" col_header="x;y;z" row_header="" name="Super_cell">[["1","1","1"]]</WaNoMatrixFloat>
+	</WaNoDictBox>
+	
+	
+	<WaNoBool name="Add-Molecule">False</WaNoBool>
+	<WaNoDictBox visibility_condition="%s == True" visibility_var_path="Add-Molecule" name="Molecule_Parameters">
+		<WaNoFloat name="Mol_Surf_distance (A)">2.0</WaNoFloat>
+		<WaNoFloat name="Mol_image_distance (A)">6.0</WaNoFloat>			
+	</WaNoDictBox>
+
+	</WaNoRoot>
+	
+	<WaNoExecCommand>
+	source  /home/ws/gt5111/miniconda3/etc/profile.d/conda.sh
+	conda activate 
+    python Path_files.py {{ wano["Aux_var"] }} {{ wano["Mol_name"] }}
+
+	python Surf_gen.py {{ wano["Bulk Properties"]["Unit Cell Types"] }}  {{ wano["Bulk Properties"]["Element"] }} {{ wano["Bulk Properties"]["Lattice Constant (A)"] }}\
+		{{ wano["Surface Properties"]["Slab_size (A)"] }} {{ wano["Surface Properties"]["Vacuum_size (A)"] }} {{ wano["Surface Properties"]["Miller_index"] }}\
+		{{ wano["Surface Properties"]["Super_cell"] }} {{ wano["Add-Molecule"] }} {{ wano["Molecule_Parameters"]["Mol_Surf_distance (A)"] }}\
+		{{ wano["Molecule_Parameters"]["Mol_image_distance (A)"] }} {{ wano["Aux_var"] }} {{ wano["Mol_name"] }}
+		cp Input_data* Input_data.yml 
+	</WaNoExecCommand>
+	
+	<WaNoInputFiles>
+		<WaNoInputFile logical_filename="Path_files.py">Path_files.py</WaNoInputFile>
+		<WaNoInputFile logical_filename="Surf_gen.py">Surf_gen.py</WaNoInputFile>
+		<WaNoInputFile logical_filename="Graphene_POSCAR">Graphene_POSCAR</WaNoInputFile>
+	</WaNoInputFiles>
+
+	<WaNoOutputFiles>
+		<WaNoOutputFile>POSCAR</WaNoOutputFile>
+		<WaNoOutputFile>Input_data.yml</WaNoOutputFile>
+	</WaNoOutputFiles>
+</WaNoTemplate>
