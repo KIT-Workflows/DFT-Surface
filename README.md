@@ -53,5 +53,5 @@ To get this workflow up running on your available computational resources, make 
 - Search_in_File: Should be set as OUTCAR and import the OUTCAR file using `ForEach/*/DFT_VASP/outputs/OUTCAR` command.
 - Delete_Files: check the box option.
 - Search_Parameters: Set the variables `z_0`, `File_number`, and `energy`.  
-## 8. Table-Generator Output
+## 9. Table-Generator Output
 - Table_var file in CSV format containing the variables defined in the Search_Parameters field.
