@@ -55,3 +55,15 @@ To get this workflow up running on your available computational resources, make 
 - Search_Parameters: Set the variables `z_0`, `File_number`, and `energy`.  
 ## 9. Table-Generator Output
 - Table-var file in CSV format containing the variables defined in the Search_Parameters field.
+
+## Acknowledgements
+This project has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No. 957189 (BIG-MAP). It is also part of BATTERY 2030+ initiative under grant agreement No. 957213.
+
+## License & copyright
+  Developer: Celso Ricardo C. Rêgo, 
+  Multiscale Materials Modelling and Virtual Design,
+  Institute of Nanotechnology, Karlsruhe Institute of Technology
+  https://www.int.kit.edu/wenzel.php
+
+Licensed under the [KIT License](LICENSE).
+
