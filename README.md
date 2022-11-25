@@ -1,6 +1,6 @@
 <img src="https://raw.githubusercontent.com/KIT-Workflows/DFT-Surface/main/dft_surface_logo.png" alt="DFT-Surface WaNo logo" width="200"/>
 
-When publishing results obtained with DFT-VASP WaNo, please consider citing it.
+When publishing results obtained with DFT-Surface WaNo, please consider citing it.
 
 # DFT-Surface
 
